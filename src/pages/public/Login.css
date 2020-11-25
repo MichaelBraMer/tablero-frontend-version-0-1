@@ -1,0 +1,24 @@
+ion-content.backgroundColor {
+    --background: url(../../imgs/portada.png) 0 0/100% 100% no-repeat;
+}
+
+ion-card.cardtransparent {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+ion-item {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+ion-button {
+    border-radius: 20px;
+}
+
+ion-img {
+    max-width: 580px;
+    display:block;
+    margin:auto;
+}

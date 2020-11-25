@@ -1,0 +1,6 @@
+ion-card.background{
+    --background: url(../../../imgs/fondo.jpg) 0 0/100% 100% no-repeat;
+}
+ion-content.backgroundOscuro{
+    --background: #000000;
+}

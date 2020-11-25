@@ -1,9 +1,8 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -23,15 +22,32 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+/* Creados por mi */
+import Login from './pages/public/Login';
+import PrivateRouter from './Routes/PrivateRouter';
+import store from './store/store';
+import socketIO from 'socket.io-client';
+import { api } from './config.json';
+import { SocketContext } from './SocketContext';
+const App: React.FC = () => {
+
+  const socket = socketIO.io(api);
+
+  return (
+    <Provider store={store} >
+      <SocketContext.Provider value={socket}>
+        <IonApp>
+          <IonReactRouter>
+            <IonRouterOutlet>
+              <Route path="/home" component={PrivateRouter} />
+              <Route path="/" component={Login} exact />
+              <Redirect to="/" />
+            </IonRouterOutlet>
+          </IonReactRouter>
+        </IonApp>
+      </SocketContext.Provider>
+    </Provider>
+  )
+};
 
 export default App;
