@@ -26,7 +26,7 @@ const Home: React.FC = () => {
 
       <IonCardContent >
         Apreta OK para empezar! <br />
-        <IonButton onClick={handleClickNext} >OK</IonButton>
+        <IonButton onClick={handleClickNext} >OK!</IonButton>
       </IonCardContent>
     </IonCard>)
   } else {
@@ -46,24 +46,24 @@ const Home: React.FC = () => {
   if (juego.turno === juego.jugadores.map((index: any) => index.id).indexOf(jugador.id) + 1) {
     game = (<IonCard >
       <IonCardHeader>
-        <IonCardTitle>Nunca Nunca</IonCardTitle>
+        <IonCardTitle>{nuncaNunca[juego.juego].tipo}</IonCardTitle>
       </IonCardHeader>
 
       <IonCardContent >
         
-        {nuncaNunca[juego.juego]} <br />
-        <IonButton onClick={handleClickNext} >OK</IonButton>
+        {nuncaNunca[juego.juego].text} <br />
+        <IonButton onClick={handleClickNext} >Siguiente</IonButton>
       </IonCardContent>
     </IonCard>)
   }else{
     game = (<IonCard >
       <IonCardHeader>
-        <IonCardTitle>Nunca Nunca</IonCardTitle>
+        <IonCardTitle>{nuncaNunca[juego.juego].tipo}</IonCardTitle>
       </IonCardHeader>
 
       <IonCardContent >
         
-        {nuncaNunca[juego.juego]} <br />
+        {nuncaNunca[juego.juego].text} <br />
       </IonCardContent>
     </IonCard>)
   }
